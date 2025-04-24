@@ -1,0 +1,59 @@
+---
+import SEO from '../../components/SEO.astro'
+import Layout from '../../layouts/Layout.astro'
+import { getCollection } from 'astro:content'
+import FormattedDate from '../../components/FormattedDate.astro'
+
+const posts = (
+	await getCollection('indlaeg', ({ data }) => {
+		return data.published === true
+	})
+).sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+---
+
+<head>
+	<SEO title="Indlæg" description="Alle mine indlæg" />
+</head>
+<Layout>
+	<div class="main-content">
+		<div data-prose>
+			<div>
+				<h1 data-heading data-text>Indlæg</h1>
+				<div>
+					<span
+						><svg
+							height="16"
+							stroke-linejoin="round"
+							viewBox="0 0 16 16"
+							width="16"
+							style="color: currentcolor;"
+							><path
+								fill-rule="evenodd"
+								clip-rule="evenodd"
+								d="M1.99939 10.25V11H3.49939V10.25V4.56008L12.7191 13.7798L13.2495 14.3101L14.3101 13.2494L13.7798 12.7191L4.56121 3.50058H10.25H11V2.00058H10.25H2.99939C2.4471 2.00058 1.99939 2.4483 1.99939 3.00058V10.25Z"
+								fill="currentColor"></path></svg
+						></span
+					>
+					<span data-text>
+						<a
+							data-variant="text"
+							data-link
+							href="/"
+							style="color: var(--gray-12);">Hjem</a
+						>
+					</span>
+				</div>
+			</div>
+			<div class="writing-wrapper">
+				{
+					posts.map((post) => (
+						<a data-link href={`/indlaeg/${post.id}`}>
+							<FormattedDate data-text date={post.data.pubDate} />
+							<p data-text>{post.data.title}</p>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</Layout>
