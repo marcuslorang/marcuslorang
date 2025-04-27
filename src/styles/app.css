@@ -551,6 +551,20 @@ a {
 	padding-bottom: var(--scrollbar-padding);
 	padding-left: var(--body-margin-left);
 	padding-right: var(--body-margin-right);
+	-webkit-mask-image: linear-gradient(
+		to right,
+		transparent 0,
+		#000 30px,
+		#000 calc(100% - 30%),
+		transparent 100%
+	);
+	mask-image: linear-gradient(
+		to right,
+		transparent 0,
+		#000 30px,
+		#000 calc(100% - 30%),
+		transparent 100%
+	);
 }
 
 [data-scroller]:before {
