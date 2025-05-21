@@ -1,3 +1,3 @@
 # Marcus Lorang
 
-Læs mere på min [Blog] <https://marcuslorang.com/>
+Læs mere på min blog <https://marcuslorang.com/>
